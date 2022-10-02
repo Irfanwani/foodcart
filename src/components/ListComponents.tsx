@@ -6,6 +6,8 @@ import {
 } from "react-native";
 import styles from "../styles";
 
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 export const Listempty: FC = () => {
   return (
     <View style={styles.emptyview}>
@@ -27,6 +29,7 @@ export const Listfooter: FC<lfprops> = ({ onPress, disabled }) => {
         onPress={onPress}
         style={disabled ? styles.additem_disabled : styles.additem}
       >
+        <Ionicons name='add' size={25} />
         <Text>Add Item</Text>
       </TouchableOpacity>
     </View>

@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   additem: {
+    flexDirection: "row",
+    justifyContent: "center",
     width: "80%",
     backgroundColor: "green",
     alignItems: "center",
@@ -44,6 +46,8 @@ const styles = StyleSheet.create({
   },
 
   additem_disabled: {
+    flexDirection: "row",
+    justifyContent: "center",
     width: "80%",
     backgroundColor: "grey",
     alignItems: "center",
