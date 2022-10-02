@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   fooditems: Array(),
+  showform: false,
 };
 
 const foodSlice = createSlice({
@@ -20,9 +21,13 @@ const foodSlice = createSlice({
         price: payload.price,
       });
     },
-  },
+
+    showForm: (state, {payload}) => {
+      state.showform = payload;
+    },
+  }
 });
 
-export const { addItem, removeItem, updateItem } = foodSlice.actions;
+export const { addItem, removeItem, updateItem, showForm } = foodSlice.actions;
 
 export default foodSlice.reducer;

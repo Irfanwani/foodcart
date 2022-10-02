@@ -34,11 +34,6 @@ export const Listfooter: FC<lfprops> = ({ onPress, disabled }) => {
   );
 };
 
-
 export const Listheader: FC = () => {
-  return (
-    <Text style={styles.header}>
-      Food Items
-    </Text>
-  )
-}
+  return <Text style={styles.header}>Food Items</Text>;
+};

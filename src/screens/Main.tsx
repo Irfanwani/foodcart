@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { FlatList } from "react-native";
+import { FC, useEffect, useState } from "react";
+import { FlatList, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addItem, removeItem, updateItem } from "../store/reducers";
+import { showForm } from "../store/reducers";
 import Card from "../components/Card";
 import {
   Listempty,
@@ -10,24 +10,46 @@ import {
   Listheader,
 } from "../components/ListComponents";
 import styles from "../styles";
+import Form from "../components/Form";
 
 const Main: FC = () => {
-  const { fooditems } = useSelector((state: any) => ({
+  const { fooditems, showform } = useSelector((state: any) => ({
     fooditems: state.fooditems,
+    showform: state.showform,
   }));
+
+  const [showf, setShowf] = useState(false);
+
+  useEffect(() => {
+    if (!showform) {
+      setTimeout(() => {
+        setShowf(false);
+      }, 300);
+    }else {
+      setShowf(true)
+    }
+  }, [showform]);
 
   const dispatch = useDispatch();
 
+  const sf = () => {
+    dispatch(showForm(true));
+  };
+
   return (
-    <FlatList
-      style={styles.list}
-      data={fooditems}
-      renderItem={renderItem}
-      keyExtractor={(item) => fooditems.indexOf(item)}
-      ListEmptyComponent={<Listempty />}
-      ListFooterComponent={<Listfooter onPress={() => {}} disabled={false} />}
-      ListHeaderComponent={<Listheader />}
-    />
+    <View style={styles.mainview}>
+      <FlatList
+        style={styles.list}
+        data={fooditems}
+        renderItem={renderItem}
+        keyExtractor={(item) => fooditems.indexOf(item)}
+        ListEmptyComponent={<Listempty />}
+        ListFooterComponent={<Listfooter onPress={sf} disabled={false} />}
+        ListHeaderComponent={fooditems.length && <Listheader />}
+      />
+
+      {showf && <Form />}
+    </View>
   );
 };
 
@@ -42,5 +64,5 @@ interface renderProps {
 }
 
 const renderItem = ({ item, index }: renderProps) => {
-  return <Card item={item} />;
+  return <Card key={index} item={item} index={index} />;
 };
