@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   fooditems: Array(),
   showform: false,
+  showdialog: false,
+  index: 0,
 };
 
 const foodSlice = createSlice({
@@ -22,12 +24,17 @@ const foodSlice = createSlice({
       });
     },
 
-    showForm: (state, {payload}) => {
+    showForm: (state, { payload }) => {
       state.showform = payload;
     },
-  }
+    showDialog: (state, { payload }) => {
+      state.showdialog = payload.bool;
+      state.index = payload.index;
+    },
+  },
 });
 
-export const { addItem, removeItem, updateItem, showForm } = foodSlice.actions;
+export const { addItem, removeItem, updateItem, showForm, showDialog } =
+  foodSlice.actions;
 
 export default foodSlice.reducer;

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { store, persistedStore } from './src/store/store'
 import Loading from './src/components/Loading'
 
+
 const App: FC = () => {
     return (
         <Provider store={store}>

@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import styles from "../styles";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import {removeItem} from '../store/reducers';
+import { showDialog } from '../store/reducers';
 
 import {useDispatch } from 'react-redux' 
 
@@ -19,8 +19,9 @@ interface CardProps {
 const Card: FC<CardProps> = ({ item, index }) => {
   const dispatch = useDispatch();
 
+
   const removefood = () => {
-    dispatch(removeItem(index));
+    dispatch(showDialog({bool: true, index}));
   }  
   
   return (
@@ -28,7 +29,7 @@ const Card: FC<CardProps> = ({ item, index }) => {
       <Text>{item.name}</Text>
       <Text>Price: {item.price}</Text>
     <Ionicons name='md-pencil' size={20} color='green' />
-    <Ionicons name='trash' size={20} color='red' onPress={removefood} />
+    <Ionicons name='trash' size={20} color='red' onPress={removefood} />    
     </View>
   );
 };

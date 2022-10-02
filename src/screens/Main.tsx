@@ -11,24 +11,39 @@ import {
 } from "../components/ListComponents";
 import styles from "../styles";
 import Form from "../components/Form";
+import Dialog from "../components/Dialog";
 
 const Main: FC = () => {
-  const { fooditems, showform } = useSelector((state: any) => ({
+  const { fooditems, showform, showdialog, index } = useSelector((state: any) => ({
     fooditems: state.fooditems,
     showform: state.showform,
+    showdialog: state.showdialog,
+    index: state.index
   }));
 
   const [showf, setShowf] = useState(false);
+
+  const [showd, setShowd] = useState(false);
 
   useEffect(() => {
     if (!showform) {
       setTimeout(() => {
         setShowf(false);
       }, 300);
-    }else {
-      setShowf(true)
+    } else {
+      setShowf(true);
     }
   }, [showform]);
+
+  useEffect(() => {
+    if (!showdialog) {
+      setTimeout(() => {
+        setShowd(false);
+      }, 250);
+    } else {
+      setShowd(true);
+    }
+  }, [showdialog]);
 
   const dispatch = useDispatch();
 
@@ -49,6 +64,8 @@ const Main: FC = () => {
       />
 
       {showf && <Form />}
+
+      {showd && <Dialog id={index} />}
     </View>
   );
 };

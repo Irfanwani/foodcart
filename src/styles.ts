@@ -97,7 +97,40 @@ const styles = StyleSheet.create({
   warning: {
     color: 'red',
     fontSize: 20,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginBottom: 20
+  },
+  cancel: {
+    borderWidth: 0.5,
+    borderColor: 'grey',
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: 'rgba(50, 50, 50, 0.3)'
+  },
+  delete: {
+    borderWidth: 0.5,
+    borderColor: 'red',
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255, 0, 0, 0.4)'
+
+
+  },
+  dialog: {
+    flex: 1, 
+    position: 'absolute',
+    backgroundColor: 'rgba(50, 50, 50, 0.4)',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    marginTop: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  dialogbox: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 20,
+    justifyContent: 'space-between',
   }
 });
 
