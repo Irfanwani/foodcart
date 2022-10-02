@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 import { showForm } from "../store/reducers";
@@ -13,7 +13,11 @@ import styles from "../styles";
 import Form from "../components/Form";
 import Dialog from "../components/Dialog";
 
-const Main: FC = () => {
+interface MainProps {
+  navigation: any;
+}
+
+const Main: FC<MainProps> = ({ navigation }) => {
   const { fooditems, showform, showdialog, index } = useSelector(
     (state: any) => ({
       fooditems: state.fooditems,
@@ -26,6 +30,10 @@ const Main: FC = () => {
   const [showf, setShowf] = useState(false);
 
   const [showd, setShowd] = useState(false);
+
+  const gotosecond = () => {
+    navigation.navigate("Details");
+  };
 
   useEffect(() => {
     if (!showform) {
@@ -65,6 +73,9 @@ const Main: FC = () => {
         ListHeaderComponent={fooditems.length && <Listheader />}
       />
 
+      <TouchableOpacity onPress={gotosecond} style={styles.additem}>
+        <Text>Show All Items</Text>
+      </TouchableOpacity>
       {showf && <Form />}
 
       {showd && <Dialog id={index} />}
