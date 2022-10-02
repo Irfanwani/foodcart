@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import styles from "../styles";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { showDialog, showForm, updateItem } from "../store/reducers";
+import { showDialog, showForm } from "../store/reducers";
 
 import { useDispatch } from "react-redux";
 

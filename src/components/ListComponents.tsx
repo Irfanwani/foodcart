@@ -22,7 +22,7 @@ interface lfprops {
 }
 export const Listfooter: FC<lfprops> = ({ onPress, disabled }) => {
   return (
-    <View>
+    <View style={styles.form}>
       <View style={styles.divider} />
       <TouchableOpacity
         disabled={disabled}
