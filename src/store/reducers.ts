@@ -4,7 +4,7 @@ const initialState = {
   fooditems: Array(),
   showform: false,
   showdialog: false,
-  index: 0,
+  index: -1,
 };
 
 const foodSlice = createSlice({
@@ -25,7 +25,8 @@ const foodSlice = createSlice({
     },
 
     showForm: (state, { payload }) => {
-      state.showform = payload;
+      state.showform = payload.bool;
+      state.index = payload.index;
     },
     showDialog: (state, { payload }) => {
       state.showdialog = payload.bool;

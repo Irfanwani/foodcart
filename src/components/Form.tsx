@@ -5,7 +5,7 @@ import { Listfooter } from "./ListComponents";
 import * as Animatable from "react-native-animatable";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, showForm } from "../store/reducers";
+import { addItem, showForm, updateItem } from "../store/reducers";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -14,21 +14,26 @@ const Form: FC = () => {
 
   const [price, setPrice] = useState("");
 
-  const { showform } = useSelector((state: any) => ({
+  const { showform, index } = useSelector((state: any) => ({
     showform: state.showform,
+    index: state.index,
   }));
 
   const dispatch = useDispatch();
 
   const addfood = () => {
-    dispatch(addItem({ name, price: parseInt(price) }));
+    if (index >= 0) {
+      dispatch(updateItem({ name, price: parseInt(price), id: index }));
+    } else {
+      dispatch(addItem({ name, price: parseInt(price) }));
+    }
     closeform();
   };
 
   const closeform = () => {
     setName("");
     setPrice("");
-    dispatch(showForm(false));
+    dispatch(showForm({ bool: false, index: -1 }));
   };
 
   return (

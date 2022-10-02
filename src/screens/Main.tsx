@@ -14,12 +14,14 @@ import Form from "../components/Form";
 import Dialog from "../components/Dialog";
 
 const Main: FC = () => {
-  const { fooditems, showform, showdialog, index } = useSelector((state: any) => ({
-    fooditems: state.fooditems,
-    showform: state.showform,
-    showdialog: state.showdialog,
-    index: state.index
-  }));
+  const { fooditems, showform, showdialog, index } = useSelector(
+    (state: any) => ({
+      fooditems: state.fooditems,
+      showform: state.showform,
+      showdialog: state.showdialog,
+      index: state.index,
+    })
+  );
 
   const [showf, setShowf] = useState(false);
 
@@ -48,7 +50,7 @@ const Main: FC = () => {
   const dispatch = useDispatch();
 
   const sf = () => {
-    dispatch(showForm(true));
+    dispatch(showForm({ bool: true, index: -1 }));
   };
 
   return (

@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  GestureResponderEvent,
 } from "react-native";
 import styles from "../styles";
 

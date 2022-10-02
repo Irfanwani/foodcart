@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 
 import * as Animatable from "react-native-animatable";
@@ -18,7 +18,7 @@ const Dialog: FC<dp> = ({ id }) => {
   }));
 
   const closeDialog = () => {
-    dispatch(showDialog(false));
+    dispatch(showDialog({ bool: false, index: -1 }));
   };
   const deleteItem = () => {
     dispatch(removeItem(id));
