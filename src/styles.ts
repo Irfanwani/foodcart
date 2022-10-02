@@ -4,9 +4,19 @@ const styles = StyleSheet.create({
   mainview: {
     flex: 1
   },
+  title: {
+    fontWeight: 'bold'
+  },
   card: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
+    borderColor: 'grey',
+    borderWidth: 0.5,
+    padding: 15,
+    marginHorizontal: 10,
+    marginVertical: 5,
+    borderRadius: 10,
+    backgroundColor: 'rgba(50, 50, 50, 0.1)'
   },
   loader: {
     flex: 1,
@@ -131,6 +141,11 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     justifyContent: 'space-between',
+  },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    flex: 0.4
   }
 });
 
