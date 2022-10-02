@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
+    maxWidth: 50,
   },
   card: {
     flexDirection: "row",
@@ -148,6 +149,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     flex: 0.4,
+  },
+  price: {
+    maxWidth: 100,
   },
 });
 

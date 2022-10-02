@@ -30,7 +30,7 @@ const Card: FC<CardProps> = ({ item, index }) => {
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{item.name}</Text>
-      <Text><Text style={styles.title}>Price:</Text> Rs.{item.price}</Text>
+      <Text style={styles.price}><Text style={styles.title}>Price:</Text> Rs.{item.price}</Text>
       <View style={styles.actions}>
         <Ionicons name="md-pencil" size={20} color="green" onPress={editfood} />
         <Ionicons name="trash" size={20} color="red" onPress={removefood} />
