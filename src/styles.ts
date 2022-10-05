@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     borderColor: "grey",
     borderWidth: 0.5,
     padding: 15,
