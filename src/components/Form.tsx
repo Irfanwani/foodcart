@@ -23,9 +23,17 @@ const Form: FC = () => {
 
   const addfood = () => {
     if (index >= 0) {
-      dispatch(updateItem({ name, price: parseInt(price), id: index }));
+      dispatch(
+        updateItem({
+          name,
+          price: parseFloat(parseFloat(price).toFixed(2)),
+          id: index,
+        })
+      );
     } else {
-      dispatch(addItem({ name, price: parseInt(price) }));
+      dispatch(
+        addItem({ name, price: parseFloat(parseFloat(price).toFixed(2)) })
+      );
     }
     closeform();
   };
