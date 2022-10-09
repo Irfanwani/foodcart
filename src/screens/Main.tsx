@@ -86,7 +86,7 @@ const Main: FC<MainProps> = ({ navigation }) => {
         marginChildrenBottom={10}
         marginChildrenTop={10}
         childrenHeight={childrenHeight}
-        renderHeaderView={fooditems.length && <Listheader />}
+        renderHeaderView={fooditems.length ? <Listheader /> : <></>}
         renderBottomView={<Listfooter onPress={sf} disabled={false} />}
         onDataChange={(data: Array<Object>) => {
           dispatch(shuffleItems(data));
