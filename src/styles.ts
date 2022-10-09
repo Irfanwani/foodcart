@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     maxWidth: 50,
+    
   },
   card: {
     alignSelf: 'center',
@@ -157,6 +158,13 @@ const styles = StyleSheet.create({
   price: {
     maxWidth: 100,
   },
+  dialogbuttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+    marginHorizontal: 15,
+    marginBottom: 10
+  }
 });
 
 export default styles;

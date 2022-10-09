@@ -34,7 +34,7 @@ const Dialog: FC<dp> = ({ id }) => {
         <Text style={styles.warning}>Are you Sure?</Text>
         <Text>This action cannot be reverted.</Text>
 
-        <View style={styles.card}>
+        <View style={styles.dialogbuttons}>
           <TouchableOpacity onPress={closeDialog} style={styles.cancel}>
             <Text>Cancel</Text>
           </TouchableOpacity>
