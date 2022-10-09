@@ -1,8 +1,14 @@
 import { FC, useEffect, useState } from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Text,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-import { showForm } from "../store/reducers";
+import { showForm, shuffleItems } from "../store/reducers";
 import Card from "../components/Card";
 import {
   Listempty,
@@ -12,6 +18,14 @@ import {
 import styles from "../styles";
 import Form from "../components/Form";
 import Dialog from "../components/Dialog";
+
+import { AutoDragSortableView } from "react-native-drag-sort";
+
+const { width } = Dimensions.get("window");
+
+const parentWidth = width;
+const childrenWidth = width;
+const childrenHeight = 48;
 
 interface MainProps {
   navigation: any;
@@ -63,14 +77,24 @@ const Main: FC<MainProps> = ({ navigation }) => {
 
   return (
     <View style={styles.mainview}>
-      <FlatList
-        style={styles.list}
-        data={fooditems}
+      {!fooditems.length && <Listempty />}
+
+      <AutoDragSortableView
+        dataSource={fooditems}
+        parentWidth={parentWidth}
+        childrenWidth={childrenWidth}
+        marginChildrenBottom={10}
+        marginChildrenTop={10}
+        childrenHeight={childrenHeight}
+        renderHeaderView={fooditems.length && <Listheader />}
+        renderBottomView={<Listfooter onPress={sf} disabled={false} />}
+        onDataChange={(data: Array<Object>) => {
+          dispatch(shuffleItems(data));
+        }}
+        keyExtractor={(item: { name: string; price: number }, index: number) =>
+          index.toString()
+        }
         renderItem={renderItem}
-        keyExtractor={(item) => fooditems.indexOf(item)}
-        ListEmptyComponent={<Listempty />}
-        ListFooterComponent={<Listfooter onPress={sf} disabled={false} />}
-        ListHeaderComponent={fooditems.length && <Listheader />}
       />
 
       <TouchableOpacity onPress={gotosecond} style={styles.additem}>
@@ -93,6 +117,6 @@ interface renderProps {
   index: number;
 }
 
-const renderItem = ({ item, index }: renderProps) => {
+const renderItem = (item: { name: string; price: number }, index: number) => {
   return <Card key={index} item={item} index={index} />;
 };

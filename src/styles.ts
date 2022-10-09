@@ -10,15 +10,19 @@ const styles = StyleSheet.create({
     maxWidth: 50,
   },
   card: {
+    alignSelf: 'center',
     flexDirection: "row",
     justifyContent: "space-between",
     borderColor: "grey",
     borderWidth: 0.5,
-    padding: 15,
+    paddingVertical: 20,
+    paddingHorizontal: 5,
     marginHorizontal: 10,
     marginVertical: 5,
     borderRadius: 10,
     backgroundColor: "rgba(50, 50, 50, 0.1)",
+    width: Dimensions.get("window").width - 20,
+    maxHeight: 60
   },
   loader: {
     flex: 1,
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 30,
     alignSelf: "center",
-    margin: 10,
+    marginTop: 30,
     color: "teal",
   },
   sheet: {

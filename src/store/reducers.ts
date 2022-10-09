@@ -11,6 +11,9 @@ const foodSlice = createSlice({
   name: "foodSlice",
   initialState,
   reducers: {
+    shuffleItems: (state, { payload }) => {
+      state.fooditems = payload;
+    },
     addItem: ({ fooditems }, { payload }) => {
       fooditems.push(payload);
     },
@@ -35,7 +38,13 @@ const foodSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, updateItem, showForm, showDialog } =
-  foodSlice.actions;
+export const {
+  addItem,
+  removeItem,
+  updateItem,
+  showForm,
+  showDialog,
+  shuffleItems,
+} = foodSlice.actions;
 
 export default foodSlice.reducer;
